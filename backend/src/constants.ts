@@ -22,3 +22,5 @@ export const jokes = [
     joke: "Chuck Norris can hear sign language.",
   },
 ];
+
+export const DB_NAME = "youtube";
