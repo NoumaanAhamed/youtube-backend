@@ -3,32 +3,36 @@
 // import dotenv from "dotenv"
 // dotenv.config({ path:".env" })
 
-import express from "express";
 import mongoose from "mongoose";
 import { jokes } from "./constants";
 import { DB_NAME } from "./constants";
 import { connectDB } from "./db";
+import { app } from "./app";
 
-const app = express();
 const PORT = process.env.PORT || 8080;
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017";
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+// app.get("/", (req, res) => {
+//   res.send("Hello World!");
+// });
 
-app.get("/api/jokes", (req, res) => {
-  res.send(jokes);
-});
+// app.get("/api/jokes", (req, res) => {
+//   res.send(jokes);
+// });
 
 connectDB()
   .then(() => {
+    app.on("error", (error) => {
+      console.log("Error starting server:", error);
+      throw error;
+    });
+
     app.listen(PORT, () => {
       console.log(`Listening on port ${PORT}...`);
     });
   })
   .catch((e) => {
-    console.log(e);
+    console.log("MongoDB Connection Failed", e);
   });
 
 // (async () => {
