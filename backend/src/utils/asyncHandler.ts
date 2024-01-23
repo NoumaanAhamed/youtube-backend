@@ -1,4 +1,13 @@
-// const asyncHandler = () => {};
+// JS version of asyncHandler
+// const asyncHandlerRaw = (func) => {
+//   return async () => {
+//     try {
+//       await func();
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   };
+// };
 
 import type { Request, Response, NextFunction } from "express";
 
@@ -24,4 +33,4 @@ const asyncHandlerUsingPromises = (func: RequestHandler) => {
   };
 };
 
-export { asyncHandler };
+export { asyncHandler, asyncHandlerUsingPromises };
