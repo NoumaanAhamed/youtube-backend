@@ -84,3 +84,57 @@
   - They are short-lived and expire after a certain time.
   - They are stored in the browser.
 - Both access tokens and refresh tokens are JWTs.
+
+# HTTP 
+
+## HTTP Headers
+
+- HTTP headers are key-value pairs that are sent along with HTTP requests and responses.(metadata)
+- Application of headers : Authentication, Caching, Content Negotiation, etc.
+- Headers format : {X-Header-Name: Header Value} or {Header-Name: Header Value}
+- Headers are case-insensitive.
+- Headers are separated by a colon. eg: Content-Type: application/json
+- Types of headers:
+  - Request headers: Apply only to requests.
+  - Response headers: Apply only to responses.
+  - Representation headers: encoding,compression, 
+  - Payload headers: Content-Type, Content-Length(data)
+- Most Common Headers:
+  - Accept: Specifies the media types that are acceptable for the response.
+  eg: Accept: application/json
+  - User-Agent: Specifies the user agent string of the client.
+  - Content-Type: Specifies the media type of the request body.
+  - Authorization: Specifies the authentication credentials for HTTP authentication.
+  - Cache-Control: Specifies directives for caching mechanisms in both requests and responses. 
+  - Cookie: Specifies cookies that are sent to the server.
+- CORS Headers:
+  - Access-Control-Allow-Origin: Specifies the origins that are allowed to access the resource.
+  - Access-Control-Allow-Methods: Specifies the HTTP methods that are allowed to access the resource.
+  - Access-Control-Allow-Headers: Specifies the headers that are allowed to access the resource.
+  - Access-Control-Allow-Credentials: Specifies whether credentials are allowed to be sent with requests.
+  - Access-Control-Max-Age: Specifies the maximum amount of time that a preflight request can be cached.
+- Security Headers:
+  - X-XSS-Protection: Enables cross-site scripting (XSS) filtering.
+  - Content-Security-Policy: Specifies the content security policy for the resource.
+  - Server: Specifies information about the server.
+- HTTP Status Codes:
+  - 1xx: Informational
+  - 2xx: Success
+  - 3xx: Redirection
+  - 4xx: Client Error
+  - 5xx: Server Error
+- Common status codes:
+  - 100 Continue, 101 Switching Protocols, 102 Processing
+  - 200 OK, 201 Created, 202 Accepted,
+  - 301 Moved Permanently, 307 Temporary Redirect, 308 Permanent Redirect
+  - 400 Bad Request, 401 Unauthorized, 403 Forbidden, 404 Not Found, 405 Method Not Allowed, 409 Conflict, 429 Too Many Requests, 402 Payment Required
+  - 500 Internal Server Error, 501 Not Implemented, 502 Bad Gateway
+- HTTP Methods:
+  - GET: Retrieves a resource.
+  - HEAD: Retrieves the headers for a resource.
+  - POST: Creates a resource.
+  - PUT: replace a resource.
+  - DELETE: Deletes a resource.
+  - PATCH: Partially updates a resource.
+  - OPTIONS: Returns the HTTP methods that the server supports.
+  - TRACE: Returns the full HTTP request received by the server.
