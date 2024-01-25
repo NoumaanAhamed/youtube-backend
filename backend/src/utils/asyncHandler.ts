@@ -15,7 +15,7 @@ type RequestHandler = (
   req: Request,
   res: Response,
   next: NextFunction
-) => Promise<Response>;
+) => Promise<void | Response>;
 
 const asyncHandler = (func: RequestHandler) => {
   return async (req: Request, res: Response, next: NextFunction) => {
