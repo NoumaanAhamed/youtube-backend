@@ -18,12 +18,21 @@ class ApiError extends Error {
     this.success = false;
 
     if (stack) {
+      // use provided stack trace
       this.stack = stack;
     } else {
+      // capture stack trace
       Error.captureStackTrace(this, this.constructor);
     }
   }
 }
 
-// const apiError = new ApiError(404, "Not Found");
-// console.log(apiError);
+export { ApiError };
+
+// let flag = false;
+
+// if (flag) {
+//   throw new ApiError(404, "User not found");
+// } else {
+//   throw new Error("Server Error");
+// }

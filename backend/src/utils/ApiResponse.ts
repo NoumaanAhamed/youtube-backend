@@ -16,7 +16,7 @@ class ApiResponse {
   }
 }
 
-const successApiResponse = new ApiResponse(400);
-console.log(successApiResponse);
+// const successApiResponse = new ApiResponse(400);
+// console.log(successApiResponse);
 
 export { ApiResponse };
