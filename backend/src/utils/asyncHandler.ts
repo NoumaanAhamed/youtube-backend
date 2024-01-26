@@ -10,6 +10,7 @@
 // };
 
 import type { Request, Response, NextFunction } from "express";
+import { ApiError } from "./ApiError";
 
 type RequestHandler = (
   req: Request,
@@ -21,7 +22,7 @@ const asyncHandler = (func: RequestHandler) => {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
       await func(req, res, next);
-    } catch (error) {
+    } catch (error: ApiError | any) {
       next(error);
     }
   };

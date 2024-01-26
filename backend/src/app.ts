@@ -1,4 +1,7 @@
 import express from "express";
+import type { Request, Response, NextFunction } from "express";
+import { globalErrorHandler } from "./utils/errorHandler";
+
 import cors from "cors";
 import cookieParser from "cookie-parser";
 
@@ -36,9 +39,18 @@ app.use(cookieParser());
 //routes import
 
 import userRouter from "./routes/user.routes";
+import { ApiError } from "./utils/ApiError";
 
 //routes declaration
 
 app.use("/api/v1/users", userRouter);
+
+// fallback route for invalid routes
+app.all("*", (req: Request, res: Response, next: NextFunction) => {
+  throw new ApiError(404, `Can't find ${req.originalUrl} on this server`);
+});
+
+// global error handler
+app.use(globalErrorHandler);
 
 export { app };

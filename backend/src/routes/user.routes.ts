@@ -7,12 +7,26 @@ import {
 } from "../controllers/user.controller";
 import { upload } from "../middlewares/multer.middleware";
 import { verifyAccessToken } from "../middlewares/auth.middleware";
+import { asyncHandler } from "../utils/asyncHandler";
+import { ApiError } from "../utils/ApiError";
 
 const router = Router();
 
-router.route("/health").get((req, res) => {
-  res.send("OK");
-});
+router.route("/health").get(
+  asyncHandler(async (req, res, next) => {
+    res.status(200).json({
+      status: "success",
+      message: "Server is running",
+    });
+  })
+);
+
+//intentionaly thow error in asyncHandler
+router.route("/test").get(
+  asyncHandler(async (req, res) => {
+    throw new ApiError(500, "Test error");
+  })
+);
 
 router.route("/register").post(
   upload.fields([

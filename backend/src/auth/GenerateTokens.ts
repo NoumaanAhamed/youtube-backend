@@ -1,5 +1,5 @@
 import type { User } from "../models/user.model";
-import { ApiError } from "./ApiError";
+import { ApiError } from "../utils/ApiError";
 
 export const generateAccessAndRefreshToken = async (user: User) => {
   try {

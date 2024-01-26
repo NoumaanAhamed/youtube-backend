@@ -5,8 +5,8 @@ import { UserModel } from "../models/user.model.ts";
 import type { NextFunction, Request, Response } from "express";
 import { uploadOnCloudinary } from "../utils/cloudinary.ts";
 import { ApiResponse } from "../utils/ApiResponse.ts";
-import { generateAccessAndRefreshToken } from "../utils/GenerateTokens.ts";
-import { cookieOptions } from "../utils/cookieOptions.ts";
+import { generateAccessAndRefreshToken } from "../auth/GenerateTokens.ts";
+import { cookieOptions } from "../auth/cookieOptions.ts";
 import jwt from "jsonwebtoken";
 
 const REFRESH_TOKEN_SECRET = process.env.REFRESH_TOKEN_SECRET!;
@@ -203,6 +203,7 @@ const loginUser = asyncHandler(async (req: Request, res: Response) => {
 const logoutUser = asyncHandler(async (req: Request, res: Response) => {
   // clear cookies
   // send response
+
   await UserModel.findByIdAndUpdate(
     //@ts-ignore
     req.user._id,

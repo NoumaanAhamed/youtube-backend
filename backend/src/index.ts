@@ -4,21 +4,12 @@
 // dotenv.config({ path:".env" })
 
 import mongoose from "mongoose";
-import { jokes } from "./constants";
 import { DB_NAME } from "./constants";
 import { connectDB } from "./db";
 import { app } from "./app";
 
 const PORT = process.env.PORT || 8080;
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017";
-
-// app.get("/", (req, res) => {
-//   res.send("Hello World!");
-// });
-
-// app.get("/api/jokes", (req, res) => {
-//   res.send(jokes);
-// });
 
 connectDB()
   .then(() => {
